@@ -71,7 +71,7 @@ class PickerImageView: UIImageView, UIImagePickerControllerDelegate, UINavigatio
       delegate.showAlertController(imagePickerMenu)
 
     } else {
-      let errorAlertController = alertControllerError(title: "Oops", message: "A Camera or Photo Library is not available on this device.")
+      let errorAlertController = AlertControllerError(title: "Oops", message: "A Camera or Photo Library is not available on this device.")
       delegate.showAlertController(errorAlertController.alertController)
     }
   }
@@ -117,7 +117,7 @@ class PickerImageView: UIImageView, UIImagePickerControllerDelegate, UINavigatio
         sourceName = "Photo Library"
       }
       
-      let settingsAlertController = alertControllerGoToSettings(title: "Oops", message: "We don't have access to your \(sourceName). Go to your device Settings, then \(appName). Once we have access, you can select an image.")
+      let settingsAlertController = AlertControllerGoToSettings(title: "Oops", message: "We don't have access to your \(sourceName). Go to your device Settings, then \(appName). Once we have access, you can select an image.")
       delegate.showAlertController(settingsAlertController.alertController)
     }
   }

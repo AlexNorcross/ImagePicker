@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct alertControllerGoToSettings {
+struct AlertControllerGoToSettings {
   
   var title: String
   var message: String
@@ -30,7 +30,7 @@ struct alertControllerGoToSettings {
   }
 }
 
-struct alertControllerError {
+struct AlertControllerError {
   
   var title: String
   var message: String
