@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA1083931D4C062C00272F4E /* MyConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1083921D4C062C00272F4E /* MyConstraint.swift */; };
 		BA7ACD991D08BC1100215D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ACD981D08BC1100215D06 /* AppDelegate.swift */; };
 		BA7ACDA01D08BC1100215D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7ACD9F1D08BC1100215D06 /* Assets.xcassets */; };
 		BA7ACDA31D08BC1100215D06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7ACDA11D08BC1100215D06 /* LaunchScreen.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA1083921D4C062C00272F4E /* MyConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyConstraint.swift; sourceTree = "<group>"; };
 		BA7ACD951D08BC1100215D06 /* ImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7ACD981D08BC1100215D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA7ACD9F1D08BC1100215D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA1083911D4C05F100272F4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BAD17F5C1D0A045B0006459F /* Authorizations.swift */,
+				BAD17F621D0B29CB0006459F /* Alerts.swift */,
+				BA1083921D4C062C00272F4E /* MyConstraint.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BA7ACD8C1D08BC1100215D06 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +73,7 @@
 				BA7ACDAC1D08BCDF00215D06 /* Models */,
 				BA7ACDAB1D08BCD900215D06 /* Views */,
 				BA7ACDAA1D08BCCC00215D06 /* Controllers */,
+				BA1083911D4C05F100272F4E /* Supporting Files */,
 				BA7ACD981D08BC1100215D06 /* AppDelegate.swift */,
 				BA7ACDA41D08BC1100215D06 /* Info.plist */,
 			);
@@ -71,8 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				BA7ACDAD1D08BF3F00215D06 /* MainViewController.swift */,
-				BAD17F5C1D0A045B0006459F /* Authorizations.swift */,
-				BAD17F621D0B29CB0006459F /* Alerts.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -166,6 +177,7 @@
 			files = (
 				BA7ACD991D08BC1100215D06 /* AppDelegate.swift in Sources */,
 				BAD17F631D0B29CB0006459F /* Alerts.swift in Sources */,
+				BA1083931D4C062C00272F4E /* MyConstraint.swift in Sources */,
 				BAD17F5D1D0A045B0006459F /* Authorizations.swift in Sources */,
 				BA7ACDB01D08BF6E00215D06 /* PickerImageView.swift in Sources */,
 				BA7ACDAE1D08BF3F00215D06 /* MainViewController.swift in Sources */,

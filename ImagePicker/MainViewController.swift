@@ -10,20 +10,29 @@ import UIKit
 
 class MainViewController: UIViewController, PickerImageViewDelegate {
   
-  //MARK: Constants
-  
-  private let lengthImageSide: CGFloat = 150
-  
-  
   //MARK: Properties
   
   private var imageViewMain: PickerImageView!
+  private var constraintImageDimensions: (width: NSLayoutConstraint, height: NSLayoutConstraint)?
+  private var constraintImagePosition: (x: NSLayoutConstraint, y: NSLayoutConstraint)?
   
   
   //MARK: View Controllers
   
   override func viewDidLoad() {
     super.viewDidLoad()
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    updateConstraints(true)
+  }
+  
+  override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    
+    updateConstraints(false)
   }
   
   override func loadView() {
@@ -38,15 +47,6 @@ class MainViewController: UIViewController, PickerImageViewDelegate {
     imageViewMain.translatesAutoresizingMaskIntoConstraints = false
     rootView.addSubview(imageViewMain)
     
-    
-    let horizontalImage = NSLayoutConstraint(item: imageViewMain, attribute: .CenterX, relatedBy: .Equal, toItem: rootView, attribute: .CenterX, multiplier: 1, constant: 0)
-    let verticalImage = NSLayoutConstraint(item: imageViewMain, attribute: .CenterY, relatedBy: .Equal, toItem: rootView, attribute: .CenterY, multiplier: 1, constant: 0)
-    rootView.addConstraints([horizontalImage, verticalImage])
-    
-    let widthImage = NSLayoutConstraint(item: imageViewMain, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: lengthImageSide)
-    let heightImage = NSLayoutConstraint(item: imageViewMain, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: lengthImageSide)
-    imageViewMain.addConstraints([widthImage, heightImage])
-    
     self.view = rootView
   }
   
@@ -59,5 +59,40 @@ class MainViewController: UIViewController, PickerImageViewDelegate {
   
   func showAlertController(imagePickerMenuController: UIAlertController) {
     self.presentViewController(imagePickerMenuController, animated: true, completion: nil)
+  }
+  
+  
+  //MARK: Constraints
+  
+  private func updateConstraints(isLoading: Bool) {
+    
+    let isPortrait = MyConstraint.isPortrait(isLoading)
+    let lengthImageSide: CGFloat = isPortrait ? 150 : 250
+    
+    //dimensions
+    if constraintImageDimensions != nil {
+      constraintImageDimensions!.width.constant = lengthImageSide
+      constraintImageDimensions!.height.constant = lengthImageSide
+      
+    } else {
+      
+      let constraintWidth = NSLayoutConstraint(item: imageViewMain, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: lengthImageSide)
+      let constraintHeight = NSLayoutConstraint(item: imageViewMain, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: lengthImageSide)
+      
+      constraintImageDimensions = (constraintWidth, constraintHeight)
+      
+      imageViewMain.addConstraints([constraintWidth, constraintHeight])
+    }
+    
+    //position
+    if constraintImagePosition == nil {
+      
+      let constraintHorizontal = NSLayoutConstraint(item: imageViewMain, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0)
+      let constraintVertical = NSLayoutConstraint(item: imageViewMain, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 0)
+      
+      constraintImagePosition = (constraintHorizontal, constraintVertical)
+      
+      self.view.addConstraints([constraintHorizontal, constraintVertical])
+    }
   }
 }
